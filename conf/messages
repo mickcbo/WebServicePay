@@ -1,3 +1,14 @@
 # You can specialize this file for each language.
 # For example, for French create a messages.fr file
 #
+error_Numclient= Le numero client est inconnu 
+error_Credit= Votre solde est insufisant
+error_Autorisation_Debit= L'autorisation de prevelement depace votre autorisation
+error_Numero_carte_bleu=Le numero de carte bleu est incorrect ,Le numero doit etre compris entre 14 et 16 chiffres
+error_date_validite_carte=La date de validité est incorrect ou expiré.
+error_cryptogramme = Le cryptogramme est incorrect,c'est un chiffre compris en 001 et 999.
+error_nom_prenom=Le nom ou prenom est vide ou invalide
+error_banque= La banque n'a pas accepté votre paiement,votre credit est peu etre insufisant
+
+
+
