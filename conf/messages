@@ -5,7 +5,7 @@
 #-------Messages erreurs client-----------------
 error_Numero_carte_bleu=Le numero de carte bleu est incorrect ,Le numero doit etre compris entre 14 et 16 chiffres
 error_date_validite_carte=La date de validité est incorrect ou expiré.
-error_cryptogramme = Le cryptogramme est incorrect,c'est un chiffre compris en 001 et 999.
+error_cryptogramme = Le cryptogramme est incorrect,c est un chiffre compris en 001 et 999.
 error_nom_prenom=Le nom ou prenom est vide ou invalide
 
  #--------messages d'erreurs banque ---------------------
@@ -14,11 +14,11 @@ error_banque_credit_insu= Le credit de ce compte est insuffisant.
 error_banque_autho_depacement= Le seuil de depense de la carte  a été atteint.
 error_banque_compte_cloture=le compte de cette carte a été cloturé.
 error_banque_numero_carte_inconnu= numero de carte inconnu de la banque.
-error_banque_date_carte= La date de la carte n'est pas valide.
-error_banque_crypto= Le cryptogramme n'est pas valide.
+error_banque_date_carte= La date de la carte n est pas valide.
+error_banque_crypto= Le cryptogramme n est pas valide.
 error_banque_nom_prenom= Le nom ou prenom de cette carte ne sont pas valide.
 
  
 
-
+error_facturation=La facturation n a pas accepté la requete.
 

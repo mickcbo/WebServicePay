@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
+import play.Logger;
 import play.i18n.Messages;
 
 public class Verification_commande {
@@ -31,7 +32,7 @@ public class Verification_commande {
 		this.num_carte = num_carte;
 		this.date_validite = date_validite;
 		this.errors = new ArrayList<String>();
-		this.Verification_bancaire();
+		this.verification_bancaire();
 	}
 
 	public String getCryptogramme() {
@@ -57,13 +58,16 @@ public class Verification_commande {
 	public ArrayList<String> getErrors() {
 		return errors;
 	}
-
-	private void Verification_bancaire() {
+	
+	public void add_error(String erreur){
+		this.errors.add(erreur);
+	}
+	private void verification_bancaire() {
 
 		// --------------------------Verification de la carte
 		// -------------------------------
 		// nom et prenom
-
+		Logger.info("Verification de la carte");
 		if (nom.isEmpty() || prenom.isEmpty()) {
 
 			this.errors.add(Messages.get("error_nom_prenom"));
@@ -89,47 +93,8 @@ public class Verification_commande {
 		 */
 
 		// -----------------------------------------------------------------------------------
-
-		// Autorisation banque
-		if (this.errors.isEmpty()) {
-			Random random = new Random();
-			boolean validiteB = random.nextBoolean();
-			if (!validiteB) {
-				int error = banque_error(1, 8);
-				switch (error) {
-				case 1:
-					this.errors.add(Messages
-							.get("error_banque_service_indispo"));
-					break;
-				case 2:
-					this.errors.add(Messages
-							.get("error_banque_service_indispo"));
-					break;
-				case 3:
-					this.errors.add(Messages
-							.get("error_banque_autho_depacement"));
-					break;
-				case 4:
-					this.errors
-							.add(Messages.get("error_banque_compte_cloture"));
-					break;
-				case 5:
-					this.errors.add(Messages
-							.get("error_banque_numero_carte_inconnu"));
-					break;
-				case 6:
-					this.errors.add(Messages.get("error_banque_date_carte"));
-					break;
-				case 7:
-					this.errors.add(Messages.get("error_banque_crypto"));
-					break;
-				case 8:
-					this.errors.add(Messages.get("error_banque_nom_prenom"));
-					break;
-				}
-
-			}
-		}
+		this.verification_carte_by_banque();
+		
 
 	}
 
@@ -138,8 +103,59 @@ public class Verification_commande {
 		int value_error;
 		Random rand = new Random();
 		value_error = rand.nextInt((max - min + 1) + min);
+		
 		return value_error;
 
 	}
+	
+	private void verification_carte_by_banque(){
+		Logger.info("Verification de la banque");
+		// Autorisation banque
+		if (this.errors.isEmpty()) {
+			Random random = new Random();
+			boolean acceptation_banque = random.nextBoolean();
+			Logger.info("confirmation de la banque : %s", acceptation_banque);
+			if (!acceptation_banque) {
+				Logger.info("generation du code erreur");
+				int error = banque_error(1, 8);
+				Logger.info("Numero erreur banque : %s", String.valueOf(error));
+				switch (error) {
+					case 1:
+						this.errors.add(Messages
+								.get("error_banque_service_indispo"));
+						break;
+					case 2:
+						this.errors.add(Messages
+								.get("error_banque_service_indispo"));
+						break;
+					case 3:
+						this.errors.add(Messages
+								.get("error_banque_autho_depacement"));
+						break;
+					case 4:
+						this.errors
+								.add(Messages.get("error_banque_compte_cloture"));
+						break;
+					case 5:
+						this.errors.add(Messages
+								.get("error_banque_numero_carte_inconnu"));
+						break;
+					case 6:
+						this.errors.add(Messages.get("error_banque_date_carte"));
+						break;
+					case 7:
+						this.errors.add(Messages.get("error_banque_crypto"));
+						break;
+					case 8:
+						this.errors.add(Messages.get("error_banque_nom_prenom"));
+						break;
+				}
+
+			}
+		}
+	}
+	
+	
+	
 
 }
