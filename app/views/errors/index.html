@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<title>Pimp My Nigth</title>
+<meta name="description" content="Backbone.js Pimp My Night Example">
+<meta name="author" content="Ingesup">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/main.css">
+
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<script src="libs/jquery.min.js"></script>
+<script src="libs/jquery-ui-1.10.0.custom.js"></script>
+
+<script src="libs/underscore.min.js"></script>
+<script src="libs/backbone.min.js"></script>
+<script type="text/javascript" src="js/Classes.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/FacebookUser.js"></script>
+<script src="models/event.js"></script>
+<script src="collections/ressource.js"></script>
+<script src="views/event.js"></script>
+<script src="views/ressource.js"></script>
+<script src="app.js"></script>
+<script src="libs/jquery.ui.js" type="text/javascript" charset="utf-8"></script>
+<script src="libs/jquery.upload.js" type="text/javascript"
+	charset="utf-8"></script>
+
+
+<script src="libs/rainbow.min.js"></script>
+<script>
+	
+</script>
+</head>
+<body>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="topbar">
+				<div class="fill">
+					<div class="container">
+						<h3>
+							<a href="">Pimp my Night</a>
+						</h3>
+						<ul class="nav nav-pills nav-stacked">
+							<li class="active"><a href="#loginPage">Login</a></li>
+							<li><a
+								href="http://localhost:90/pimpThree/pimpmynigth/indexBis.html">Event
+									Creation</a></li>
+							<li><a href="#at">Event Description</a></li>
+							<li><a href="#imageGallery">Event Gallery</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8">
+			<div class="container">
+				<img src="css/PIMP.png">
+				<div id="content" class="content">
+					<!-- Content div that is filled by the router -->
+				</div>
+
+				<footer>
+					<p>&copy; 2014 Pimp My Night</p>
+				</footer>
+			</div>
+
+			<!-- Templates -->
+
+			<script id="loginPage" type="text/html">
+		<div class="container">
+			<h1>Login</h1>
+		</div>
+		<div class="row">
+			<div class="span6 offset1">
+				<div class="hero-unit">
+					<p>
+						<button id="login" class="btn btn-large">Login</button>
+						<button id="logout" class="btn btn-large" disabled="disabled">Logout</button>
+					</p>
+				</div>
+
+				<ul class="thumbnails">
+					<li>
+						<a href="#" class="thumbnail">
+							<img id="user_picture" src=""/>
+						</a>
+					</li>
+				</ul>
+
+				<h2>Login status: <span id="loginstatus"></span></h2>
+
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Attribute</th>
+							<th>Value</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>...</td>
+							<td>connect to facebook to see your profile info here</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+	<div class="span14">
+
+
+		<div id="divClient">
+
+			UserName <input type="text" id="txtIdClient" placeholder="Username"><br /><br />
+
+			Password : <input type="password" id="txtNomClient" placeholder="Password"><br /><br/>
+
+			<button id="cmdAddClient">Register</button>
+
+			<button id="loginLog">Login</button>
+
+			<br>
+
+			<ul id="listeClient"></ul>
+
+		</div>
+	</div>
+</div>
+</script>
+
+			<script id="at" type="text/html">
+	<div class="page-header">
+		<h1>Event Description</h1>
+	</div>
+	<div class="col-md-12" id="stats_container">
+		<div class="col-md-4">
+			<h4><span class="fa fa-user"></span> Clubers : <span id="dudes_counter"></span></h4>
+		</div>
+		<div class="col-md-4">
+			<h4><span class="fa fa-glass"></span> Items : <span id="items_counter"></span></h4>
+		</div>
+		<div class="col-md-4">
+			<h4><span class="fa fa-usd"></span> Total : <span id="price_counter"></span></h4>
+		</div>
+	</div>
+	<div cla
+	<div class="col-md-12" id="form_user_container">
+		<form action="#at" role="form" id="form_user">
+			<div class="form-group">
+				<input type="text" class="form-control" id="username" placeholder="Bob, Phiphi, Raoul..." required>
+			</div>
+		</form>
+	</div>
+	<div class="col-md-12" id="users_container">
+
+	</div>
+	<div class="col-md-12" id="form_item_container">
+		<form action="#at" role="form" id="form_item" class="form-inline">
+			<div class="form-group">
+				<input type="text" class="form-control" id="itemTitle" placeholder="Vodka, burritos, cat..." required>
+			</div>
+			<div class="form-group">
+				<input type="number" class="form-control" id="itemPrice" placeholder="1000€" required>
+			</div>
+			<button type="submit" class="btn btn-default">Create item</button>
+		</form>
+	</div>
+
+	<div class="col-md-12" id="items_container">
+
+	</div>
+
+
+	<div class="alert_container col-md-12">
+
+	</div>
+</script>
+
+			<script id="imageGallery" type="text/html">
+	<div class="page-header">
+		<h1>Image creation</h1>
+	</div>
+	<div class="row">
+		<div class="span14">
+			<p>
+				<h3>Use</h3>
+				<br />
+
+				<div id="example-1" class="example">
+					<div class="images"></div>
+					<div class="drop-wrapper">
+						<div class="drop"></div>
+						<div class="drop-message">Drop image files here</div>
+					</div>
+				</div>
+				<script>
+					$(function(){
+						new PimpUpload({
+							url: "http://pimpmynight-96941.euw1-2.nitrousbox.com/pictures",
+							listElement: $("#example-1 .images"),
+							dropElement: $("#example-1 .drop"),
+							assetTemplate: $("#template-image").html(),
+							assetUploadingTemplate: $("#template-image-uploading").html(),
+							maxFileSize: 1000000,
+							acceptFileTypes: "jpg, jpeg, png"
+						});
+					});
+				</script>
+
+			<script type="text/template" id="template-image">
+					<div class="item <%= state %>">
+						<div class="image" style="background-image: url( '<%= url %>' )"></div>
+						<div class="controls">
+							<a href="#imageGallery" class="delete"><img src="css/delete.png" /></a>
+						</div>
+					</div>
+				</script>
+
+			<script type="text/template" id="template-image-uploading">
+					<div class="item <%= state %>">
+						<div class="image" style="background-image: url( '<%= file_url %>' )"></div>
+						<div class="progress"><div class="progress-bar" style="width:<%= progress %>%"></div></div>
+						<div class="state"><%= state %></div>
+					</div>
+				</script>
+
+			</section>
+
+			<div class="clear"></div>
+		</div>
+
+		</p>
+	</div>
+	</div>
+	</script>
+
+
+
+	<script type="text/template" id="item_template">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<h4>
+				<% _.each(owners, function(ow){ %>
+					<span class="label label-primary"><%= ow.get('name') %></span>
+					<% }) %>
+				<%= attributes.title %>
+				<span class="label label-success pull-right"><%= attributes.price %> €</span>
+			</h4>
+		</div>
+	</div>
+</script>
+
+	<script id="not-found" type="text/html">
+	<div class="page-header">
+		<h1>404</h1>
+	</div>
+	<div class="row">
+		<div class="span14">
+			<p>
+				This is not the content you are looking for.
+			</p>
+		</div>
+	</div>
+</script>
+
+	<!-- Init Application Router -->
+
+	<script type="text/javascript">
+		var router = new ApplicationRouter($('#content'));
+		Backbone.history.start();
+	</script>
+	</div>
+</body>
+</html>

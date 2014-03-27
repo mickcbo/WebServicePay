@@ -58,10 +58,11 @@ public class Verification_commande {
 	public ArrayList<String> getErrors() {
 		return errors;
 	}
-	
-	public void add_error(String erreur){
+
+	public void add_error(String erreur) {
 		this.errors.add(erreur);
 	}
+
 	private void verification_bancaire() {
 
 		// --------------------------Verification de la carte
@@ -86,15 +87,13 @@ public class Verification_commande {
 		}
 		// Date de validité
 
-		/**
-		 * if(this.date_validite.before(new Date())){
-		 * 
-		 * this.errors.add(Messages.get("error_date_validite_carte")); }
-		 */
+		if (this.date_validite.before(new Date())) {
+
+			this.errors.add(Messages.get("error_date_validite_carte"));
+		}
 
 		// -----------------------------------------------------------------------------------
 		this.verification_carte_by_banque();
-		
 
 	}
 
@@ -103,12 +102,12 @@ public class Verification_commande {
 		int value_error;
 		Random rand = new Random();
 		value_error = rand.nextInt((max - min + 1) + min);
-		
+
 		return value_error;
 
 	}
-	
-	private void verification_carte_by_banque(){
+
+	private void verification_carte_by_banque() {
 		Logger.info("Verification de la banque");
 		// Autorisation banque
 		if (this.errors.isEmpty()) {
@@ -120,42 +119,39 @@ public class Verification_commande {
 				int error = banque_error(1, 8);
 				Logger.info("Numero erreur banque : %s", String.valueOf(error));
 				switch (error) {
-					case 1:
-						this.errors.add(Messages
-								.get("error_banque_service_indispo"));
-						break;
-					case 2:
-						this.errors.add(Messages
-								.get("error_banque_service_indispo"));
-						break;
-					case 3:
-						this.errors.add(Messages
-								.get("error_banque_autho_depacement"));
-						break;
-					case 4:
-						this.errors
-								.add(Messages.get("error_banque_compte_cloture"));
-						break;
-					case 5:
-						this.errors.add(Messages
-								.get("error_banque_numero_carte_inconnu"));
-						break;
-					case 6:
-						this.errors.add(Messages.get("error_banque_date_carte"));
-						break;
-					case 7:
-						this.errors.add(Messages.get("error_banque_crypto"));
-						break;
-					case 8:
-						this.errors.add(Messages.get("error_banque_nom_prenom"));
-						break;
+				case 1:
+					this.errors.add(Messages
+							.get("error_banque_service_indispo"));
+					break;
+				case 2:
+					this.errors.add(Messages
+							.get("error_banque_service_indispo"));
+					break;
+				case 3:
+					this.errors.add(Messages
+							.get("error_banque_autho_depacement"));
+					break;
+				case 4:
+					this.errors
+							.add(Messages.get("error_banque_compte_cloture"));
+					break;
+				case 5:
+					this.errors.add(Messages
+							.get("error_banque_numero_carte_inconnu"));
+					break;
+				case 6:
+					this.errors.add(Messages.get("error_banque_date_carte"));
+					break;
+				case 7:
+					this.errors.add(Messages.get("error_banque_crypto"));
+					break;
+				case 8:
+					this.errors.add(Messages.get("error_banque_nom_prenom"));
+					break;
 				}
 
 			}
 		}
 	}
-	
-	
-	
 
 }

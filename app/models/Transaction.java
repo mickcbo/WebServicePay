@@ -11,16 +11,16 @@ import javax.persistence.Table;
 import play.db.jpa.GenericModel;
 
 @Entity
-@Table(name="transaction")
+@Table(name = "transaction")
 public class Transaction extends GenericModel {
 	@Id
 	@Column
 	@GeneratedValue
 	Integer id;
-	
+
 	@Column
 	String id_commande;
-	
+
 	@Column
 	boolean validation;
 
@@ -82,7 +82,5 @@ public class Transaction extends GenericModel {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-	
-	
 
 }
