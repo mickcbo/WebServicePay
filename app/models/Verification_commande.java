@@ -86,11 +86,15 @@ public class Verification_commande {
 			this.errors.add(Messages.get("error_cryptogramme"));
 		}
 		// Date de validité
+		if(this.date_validite!=null){
+			if (this.date_validite.before(new Date())) {
 
-		if (this.date_validite.before(new Date())) {
-
+				this.errors.add(Messages.get("error_date_validite_carte"));
+			}
+		}else{
 			this.errors.add(Messages.get("error_date_validite_carte"));
 		}
+		
 
 		// -----------------------------------------------------------------------------------
 		this.verification_carte_by_banque();

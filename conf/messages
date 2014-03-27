@@ -7,6 +7,7 @@ error_Numero_carte_bleu=Le numero de carte bleu est incorrect ,Le numero doit et
 error_date_validite_carte=La date de validité est incorrect ou expiré.
 error_cryptogramme = Le cryptogramme est incorrect,c est un chiffre compris en 001 et 999.
 error_nom_prenom=Le nom ou prenom est vide ou invalide
+error_date_validation_inexistante=La date de validité n'est pas renseigné
 
  #--------messages d'erreurs banque ---------------------
 error_banque_service_indispo=Le service de la banque est momentanement indisponible.
