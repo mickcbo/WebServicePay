@@ -92,7 +92,7 @@ public class Verification_commande {
 				this.errors.add(Messages.get("error_date_validite_carte"));
 			}
 		}else{
-			this.errors.add(Messages.get("error_date_validite_carte"));
+			this.errors.add(Messages.get("error_date_validation_inexistante"));
 		}
 		
 
